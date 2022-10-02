@@ -159,7 +159,7 @@ function DoDamage(Dmg) -- The damage indicator is based off of the right arm, th
 		if Character and Character:IsA("Model") then
 			local Humanoid = Character:FindFirstChild("Humanoid");
 			if Humanoid then
-				if Humanoid.Health < 0 then return; end -- Don't do anything if player is dead.
+				if Humanoid.Health <= 0 then return; end -- Don't do anything if player is dead.
 				Humanoid.Health -= Dmg;
 				local DIT = coroutine.create(function()
 					local DI = DamageIndicator:Clone();
