@@ -1,3 +1,5 @@
+-- Made By SaltedHash#7231
+
 local Reach = 4; -- How far the player can reach with punches
 
 --------- Define Variables for networking
