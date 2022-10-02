@@ -122,7 +122,7 @@ SFS = Styles.new("Street Fighting",
 		["Idle"] = Animations.new(11141169348),
 		["LightPunch"] = {
 			["basedmg"] = 5,
-			["animations"] = {Animations.new(11148142938, 1.2)};
+			["animations"] = {Animations.new(11148142938, 1.2), Animations.new(11149099085,1.5)};
 		},
 		["HeavyPunch"] = {
 			["basedmg"] = 10,
@@ -133,7 +133,6 @@ SFS = Styles.new("Street Fighting",
 
 Styles:SetCurrentStyle(SFS);
 
-local SequentialPunches = 1;
 --------- REMOTE STUFF
 
 --- Define Variables For Damage Indicator
@@ -189,9 +188,12 @@ end
 ---
 
 
+
+local SequentialPunches = 1;
+
 LPunchRemote.OnServerEvent:Connect(function(Plr)
 	if Plr.Character ~= Char then return; end -- Don't do anything if we did not fire the remote.
-	
+
 	
 	----- DEBOUNCE
 	if Debounce then return; end -- Do nothing if debounce
@@ -218,13 +220,13 @@ LPunchRemote.OnServerEvent:Connect(function(Plr)
 		----- Do damage in the middle of the animation.
 			DoDamage(Damage);
 		-----
-		wait((PunchTrack.Length/Speed)/2);
+		wait(((PunchTrack.Length/Speed)/2)+0.05);
 		PunchTrack:Destroy();
 	end
 	----- MISC
 	SequentialPunches += 1;
 	SequentialPunches = SequentialPunches > #LPunchAnims and 1 or SequentialPunches; --- If SequentialPunches is greater than the lightpunch animations set it to 1, otherwise leave it the same
+
 	Debounce = false;
-	-----
 end)
 ---------
