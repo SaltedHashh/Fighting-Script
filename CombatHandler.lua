@@ -1,4 +1,4 @@
--- Made By SaltedHash#7231
+-- Made By SaltedHash#7231 (Discord-ID: 928907421689208853)
 
 local Reach = 4; -- How far the player can reach with punches
 
